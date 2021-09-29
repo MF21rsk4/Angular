@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title color="success">
+      ToDo LIST
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]=true>
+  <div id="container">
+
+<!-- Liste des Tâches -->
+<ion-list>
+  <ion-item *ngFor="let task of tasks">
+
+    <ion-checkbox (click)="toggleState(task.id)"></ion-checkbox>
+<!--     Style d'affichage de l'élément en fonction de son état -->
+    <ion-label *ngIf="task.checked; then thenBlock else elseBlock"></ion-label>
+    <ng-template #thenBlock>{{ task.id }} .<s>{{ task.title }}</s></ng-template>
+    <ng-template #elseBlock>{{ task.id }} .{{ task.title }}</ng-template>
+
+  </ion-item>
+</ion-list>
+
+<!-- Suppression des tâches sélectionnées -->
+<ion-button (click)="deleteSelectedTasks()" expand="block">Supprimer les tâches sélectionnées</ion-button>
+
+<!-- Suppression de toutes les tâches -->
+<ion-button (click)="deleteAllTasks()" color="warning" expand="block">Supprimer toutes les tâches</ion-button>
+
+<!-- Description d'une nouvelle tâche -->
+<ion-item>
+  <ion-label position="floating">Nouvelle Tâche</ion-label>
+  <ion-input [(ngModel)]="taskInput" clearInput></ion-input>
+</ion-item>
+    
+<!-- Action d'ajouter une nouvelle tâche -->
+<ion-button (click)="addTasks()" color="success" shape="round">Ajouter une tâche</ion-button>
+
+  </div>
+</ion-content>
