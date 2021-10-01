@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button color="tertiary" slot="start" text="" icon="arrow-undo-outline" defaultHref="home"></ion-back-button>
+    <ion-title color="primary">S'INSCRIRE</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div id="container">
+
+      <form [formGroup]="registerForm" (ngSubmit)="submitRegisterForm()">
+
+          <ion-item>
+            <ion-label position="floating" color="primary">Votre Pseudo (6 caractères minimum) :</ion-label>
+            <ion-input type="text" formControlName="pseudo"></ion-input>
+          </ion-item>
+
+
+          <ion-item>
+            <ion-label position="floating" color="primary">Votre Email :</ion-label>
+            <ion-input type="text" formControlName="email"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating" color="primary">Votre Mot de Passe : (entre 6 et 8 caractères)(</ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
+          </ion-item>
+
+          <ion-button class="ion-margin-top" color="primary" shape="round" fill="outline" type="submit" [disabled]="!registerForm.valid">S'inscrire</ion-button>
+
+      </form>
+  </div>
+
+</ion-content>
